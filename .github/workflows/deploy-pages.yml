@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
-# Pages is configured to serve from the gh-pages branch, so deploying
-# is just syncing main -> gh-pages; GitHub's own "pages build and
-# deployment" workflow picks it up from there.
+# Renders template.html + site.yaml into index.html, then publishes to
+# the gh-pages branch; GitHub's built-in "pages build and deployment"
+# workflow picks it up from there.
 on:
   push:
     branches: [main]
@@ -22,5 +22,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Publish main to gh-pages
-        run: git push --force origin HEAD:gh-pages
+      - name: Render site from site.yaml
+        run: python3 render.py
+
+      - name: Publish to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f index.html
+          git commit -m "Render site from site.yaml"
+          git push --force origin HEAD:gh-pages

@@ -11,7 +11,7 @@
   <meta property="og:url" content="https://matthewnewman43.github.io/the-decaf-baker/" />
   <meta property="og:site_name" content="The Decaf Baker" />
   <meta property="og:title" content="The Decaf Baker — Choco Tacos, Cookie Buckets & Custom Cakes" />
-  <meta property="og:description" content="Small-batch bakery in Pennington, NJ. Pre-order for weekend pickup — the tacos never make it to Sunday." />
+  <meta property="og:description" content="Small-batch bakery in {{town}}. Pre-order for weekend pickup — the tacos never make it to Sunday." />
   <meta property="og:image" content="https://matthewnewman43.github.io/the-decaf-baker/images/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -125,7 +125,7 @@
           </a>
         </div>
         <p class="mt-4 text-sm font-bold opacity-70">
-          Order by <span class="bg-butter px-1">[Thursday 8 PM]</span> · Pickup Sat &amp; Sun in <span class="bg-butter px-1">Pennington, NJ</span>
+          Order by <span class="bg-butter px-1">{{order_deadline}}</span> · Pickup Sat &amp; Sun in <span class="bg-butter px-1">{{town}}</span>
         </p>
       </div>
 
@@ -164,7 +164,7 @@
         <div class="p-5 flex flex-col grow">
           <div class="flex items-start justify-between gap-2">
             <h3 class="font-display font-bold text-xl">The Choco Taco</h3>
-            <span class="rounded-full bg-mint border-2 border-cocoa px-3 py-0.5 text-sm font-extrabold whitespace-nowrap">$[6]</span>
+            <span class="rounded-full bg-mint border-2 border-cocoa px-3 py-0.5 text-sm font-extrabold whitespace-nowrap">${{price_choco_taco}}</span>
           </div>
           <p class="mt-2 font-semibold text-sm grow">A crisp waffle shell folded around ice cream, dipped in chocolate, showered in crushed peanuts. Choco Taco, Birthday Taco, Chipwich, Funfetti — wrapped like the ice-cream truck used to do it.</p>
           <p class="mt-3 text-xs font-extrabold uppercase tracking-wider text-blush">★ The one you came here for</p>
@@ -178,7 +178,7 @@
         <div class="p-5 flex flex-col grow">
           <div class="flex items-start justify-between gap-2">
             <h3 class="font-display font-bold text-xl">The Cookie Bucket</h3>
-            <span class="rounded-full bg-butter border-2 border-cocoa px-3 py-0.5 text-sm font-extrabold whitespace-nowrap">$[18]</span>
+            <span class="rounded-full bg-butter border-2 border-cocoa px-3 py-0.5 text-sm font-extrabold whitespace-nowrap">${{price_cookie_bucket}}</span>
           </div>
           <p class="mt-2 font-semibold text-sm grow">A literal bucket of mini chocolate chip cookies — crispy edges, gooey middles, dangerous to leave on the counter. Built for movie nights and zero self-control.</p>
           <p class="mt-3 text-xs font-extrabold uppercase tracking-wider text-blush">★ Best for sharing (allegedly)</p>
@@ -192,7 +192,7 @@
         <div class="p-5 flex flex-col grow">
           <div class="flex items-start justify-between gap-2">
             <h3 class="font-display font-bold text-xl">The Chocolate Chip</h3>
-            <span class="rounded-full bg-bubble border-2 border-cocoa px-3 py-0.5 text-sm font-extrabold whitespace-nowrap">$[4]</span>
+            <span class="rounded-full bg-bubble border-2 border-cocoa px-3 py-0.5 text-sm font-extrabold whitespace-nowrap">${{price_chocolate_chip}}</span>
           </div>
           <p class="mt-2 font-semibold text-sm grow">Bigger than your palm, golden at the edge, puddles of melted chocolate in the middle. The cookie every other cookie is pretending to be.</p>
           <p class="mt-3 text-xs font-extrabold uppercase tracking-wider text-blush">★ Sells out first, every week</p>
@@ -206,7 +206,7 @@
         <div class="p-5 flex flex-col grow">
           <div class="flex items-start justify-between gap-2">
             <h3 class="font-display font-bold text-xl">Custom Cakes &amp; Smash Hearts</h3>
-            <span class="rounded-full bg-blush border-2 border-cocoa px-3 py-0.5 text-sm font-extrabold whitespace-nowrap">from $[45]</span>
+            <span class="rounded-full bg-blush border-2 border-cocoa px-3 py-0.5 text-sm font-extrabold whitespace-nowrap">from ${{price_custom_cakes}}</span>
           </div>
           <p class="mt-2 font-semibold text-sm grow">Geometric smash hearts, birthday cakes, cakesicles — designed around your person, your colors, your inside joke. Comes with a tiny mallet and a big moment.</p>
           <a href="https://instagram.com/thedecafbaker" target="_blank" rel="noopener" class="mt-3 text-xs font-extrabold uppercase tracking-wider text-blush hover:underline">→ Book a consult (2 weeks ahead)</a>
@@ -220,7 +220,7 @@
         <div class="p-5 flex flex-col grow">
           <div class="flex items-start justify-between gap-2">
             <h3 class="font-display font-bold text-xl">Chocolate-Covered Everything</h3>
-            <span class="rounded-full bg-sky border-2 border-cocoa px-3 py-0.5 text-sm font-extrabold whitespace-nowrap">$[24]/doz</span>
+            <span class="rounded-full bg-sky border-2 border-cocoa px-3 py-0.5 text-sm font-extrabold whitespace-nowrap">${{price_dipped_dozen}}/doz</span>
           </div>
           <p class="mt-2 font-semibold text-sm grow">Strawberries, Oreos, pretzels — dipped, drizzled, and dressed up with piped flowers. The gift box that makes you look like you have your life together.</p>
           <p class="mt-3 text-xs font-extrabold uppercase tracking-wider text-blush">★ Holiday boxes go fast</p>
@@ -247,16 +247,16 @@
   <section id="story" class="check check-mint py-4">
     <div class="bg-mint/60">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:py-20 grid md:grid-cols-[1fr_1.4fr] gap-10 items-center">
-        <img src="images/about-baker.jpg" alt="Kaley holding a tray of cupcakes outside the bakery"
+        <img src="images/about-baker.jpg" alt="{{baker_name}} holding a tray of cupcakes outside the bakery"
              class="aspect-[4/5] object-cover rounded-[2rem] border-4 border-cocoa shadow-[6px_6px_0_0_#FFF9F0] bg-cream" />
         <div>
           <h2 class="font-display font-black text-3xl sm:text-4xl">So… why "decaf"?</h2>
           <div class="mt-4 space-y-4 font-semibold leading-relaxed">
-            <p>Hi, I'm <span class="bg-butter px-1">Kaley</span>. The nickname started as a joke — I'm the only baker alive running on decaf — and it stuck, the way the good nicknames do.</p>
+            <p>Hi, I'm <span class="bg-butter px-1">{{baker_name}}</span>. The nickname started as a joke — I'm the only baker alive running on decaf — and it stuck, the way the good nicknames do.</p>
             <p>This bakery started in <span class="bg-butter px-1">my home kitchen in Pennington, New Jersey</span> with one very strong opinion: the desserts we grew up on deserved a glow-up, not a replacement. So I fold cookies into tacos. I put chocolate chip cookies in buckets. I make the ice-cream-truck stuff, but the way you remember it tasting — which, let's be honest, was better than it actually was.</p>
             <p>Every batch is small because I make all of it myself, and I'd rather sell out than phone it in. If you know, you know. If you don't yet — hi, welcome, get the taco.</p>
           </div>
-          <p class="mt-5 font-display font-bold text-xl">— Kaley <span class="text-blush">🤎</span></p>
+          <p class="mt-5 font-display font-bold text-xl">— {{baker_name}} <span class="text-blush">🤎</span></p>
         </div>
       </div>
     </div>
@@ -266,7 +266,7 @@
   <section id="reviews" class="mx-auto max-w-6xl px-4 py-16 sm:py-24">
     <div class="text-center max-w-2xl mx-auto">
       <h2 class="font-display font-black text-3xl sm:text-5xl">The group chat has thoughts</h2>
-      <p class="mt-3 font-semibold text-lg">Real reviews from real pickup regulars. <span class="opacity-60">[Swap in your actual reviews — screenshots of DMs work great here too.]</span></p>
+      <p class="mt-3 font-semibold text-lg">Real reviews from real pickup regulars.</p>
     </div>
 
     <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -312,29 +312,29 @@
               <li class="flex gap-4 items-start">
                 <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-bubble border-2 border-cocoa font-display font-black text-lg">1</span>
                 <div>
-                  <p class="font-extrabold text-lg">DM your order by [Thursday 8 PM]</p>
-                  <p class="font-semibold text-sm mt-1">Menu drops Wednesday on <a href="https://instagram.com/thedecafbaker" class="underline decoration-blush decoration-2" target="_blank" rel="noopener">@thedecafbaker</a>. Send what you want + your pickup day. I'll confirm with payment details ([Venmo / Zelle / cash]).</p>
+                  <p class="font-extrabold text-lg">DM your order by {{order_deadline}}</p>
+                  <p class="font-semibold text-sm mt-1">Menu drops Wednesday on <a href="https://instagram.com/thedecafbaker" class="underline decoration-blush decoration-2" target="_blank" rel="noopener">@thedecafbaker</a>. Send what you want + your pickup day. I'll confirm with payment details ({{payment_methods}}).</p>
                 </div>
               </li>
               <li class="flex gap-4 items-start">
                 <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-butter border-2 border-cocoa font-display font-black text-lg">2</span>
                 <div>
                   <p class="font-extrabold text-lg">I bake your batch fresh</p>
-                  <p class="font-semibold text-sm mt-1">Nothing sits in a case. Your order is baked [Friday night / Saturday morning] specifically for you. That's the whole point of pre-ordering.</p>
+                  <p class="font-semibold text-sm mt-1">Nothing sits in a case. Your order is baked {{bake_time}} specifically for you. That's the whole point of pre-ordering.</p>
                 </div>
               </li>
               <li class="flex gap-4 items-start">
                 <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-mint border-2 border-cocoa font-display font-black text-lg">3</span>
                 <div>
-                  <p class="font-extrabold text-lg">Pick up Sat or Sun in Pennington, NJ</p>
-                  <p class="font-semibold text-sm mt-1">Pickup window is [10 AM – 1 PM] at [pickup spot — porch pickup / farmers market / cafe partner]. Exact address comes with your confirmation.</p>
+                  <p class="font-extrabold text-lg">Pick up Sat or Sun in {{town}}</p>
+                  <p class="font-semibold text-sm mt-1">Pickup window is {{pickup_window}} at {{pickup_spot}}. Exact address comes with your confirmation.</p>
                 </div>
               </li>
             </ol>
 
             <div class="mt-10 rounded-3xl border-4 border-cocoa bg-cream p-6 shadow-[5px_5px_0_0_#4A2C2A]">
               <p class="font-display font-bold text-xl">🎂 Custom cakes are their own thing</p>
-              <p class="mt-2 font-semibold text-sm">Smash hearts, birthday cakes, and event boxes need <strong>[2 weeks]</strong> notice. DM "CAKE" with your date, and I'll send the consult questions — colors, flavors, the vibe, the inside joke.</p>
+              <p class="mt-2 font-semibold text-sm">Smash hearts, birthday cakes, and event boxes need <strong>{{cake_lead_time}}</strong> notice. DM "CAKE" with your date, and I'll send the consult questions — colors, flavors, the vibe, the inside joke.</p>
               <a href="https://instagram.com/thedecafbaker" target="_blank" rel="noopener"
                  class="mt-4 inline-block rounded-full bg-blush border-2 border-cocoa px-6 py-3 font-extrabold shadow-[3px_3px_0_0_#4A2C2A] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_0_#4A2C2A] transition">
                 Start a Cake Consult →
@@ -349,7 +349,7 @@
 
               <details class="rounded-2xl border-4 border-cocoa bg-cream p-5">
                 <summary class="flex items-center justify-between font-extrabold text-lg">Is everything actually decaf? <span class="faq-plus font-display text-2xl">+</span></summary>
-                <p class="mt-3 font-semibold text-sm">The name is about the baker, not the bakes — I just don't do caffeine. The desserts are fully leaded: real chocolate, real espresso powder where the recipe wants it. [Adjust if you do offer decaf/low-caf options!]</p>
+                <p class="mt-3 font-semibold text-sm">The name is about the baker, not the bakes — I just don't do caffeine. The desserts are fully leaded: real chocolate, real espresso powder where the recipe wants it.</p>
               </details>
 
               <details class="rounded-2xl border-4 border-cocoa bg-cream p-5">
@@ -359,7 +359,7 @@
 
               <details class="rounded-2xl border-4 border-cocoa bg-cream p-5">
                 <summary class="flex items-center justify-between font-extrabold text-lg">Do you deliver or ship? <span class="faq-plus font-display text-2xl">+</span></summary>
-                <p class="mt-3 font-semibold text-sm">[Local delivery within X miles for orders over $Y / pickup only for now.] No shipping yet — these are best the day they're baked, and I refuse to mail you a sad cookie.</p>
+                <p class="mt-3 font-semibold text-sm">{{delivery_policy}} No shipping yet — these are best the day they're baked, and I refuse to mail you a sad cookie.</p>
               </details>
 
               <details class="rounded-2xl border-4 border-cocoa bg-cream p-5">
@@ -369,7 +369,7 @@
 
               <details class="rounded-2xl border-4 border-cocoa bg-cream p-5">
                 <summary class="flex items-center justify-between font-extrabold text-lg">How far ahead should I book a custom cake? <span class="faq-plus font-display text-2xl">+</span></summary>
-                <p class="mt-3 font-semibold text-sm">[2 weeks] minimum, [4+ weeks] for holidays and wedding-adjacent events. I take a limited number of customs per weekend so the weekly menu doesn't suffer. A [$X] deposit locks your date.</p>
+                <p class="mt-3 font-semibold text-sm">{{cake_lead_time}} minimum, {{holiday_lead_time}} for holidays and wedding-adjacent events. I take a limited number of customs per weekend so the weekly menu doesn't suffer. A {{cake_deposit}} deposit locks your date.</p>
               </details>
 
               <details class="rounded-2xl border-4 border-cocoa bg-cream p-5">
@@ -387,7 +387,7 @@
   <!-- ══════════════════ FINAL CTA ══════════════════ -->
   <section class="mx-auto max-w-4xl px-4 py-16 sm:py-24 text-center">
     <h2 class="font-display font-black text-3xl sm:text-5xl leading-tight">This weekend's batch is<br />already disappearing.</h2>
-    <p class="mt-4 font-semibold text-lg">Menu drops Wednesday. Orders close [Thursday 8 PM]. The tacos never make it to Sunday.</p>
+    <p class="mt-4 font-semibold text-lg">Menu drops Wednesday. Orders close {{order_deadline}}. The tacos never make it to Sunday.</p>
     <a href="https://instagram.com/thedecafbaker" target="_blank" rel="noopener"
        class="mt-8 inline-block rounded-full bg-blush border-4 border-cocoa px-10 py-4 font-extrabold text-xl shadow-[5px_5px_0_0_#4A2C2A] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[3px_3px_0_0_#4A2C2A] transition">
       🧺 DM Your Pre-Order
@@ -404,7 +404,7 @@
         </div>
         <div class="text-center sm:text-right font-semibold text-sm space-y-1">
           <p><a href="https://instagram.com/thedecafbaker" target="_blank" rel="noopener" class="underline decoration-bubble decoration-2 hover:text-bubble transition">@thedecafbaker</a></p>
-          <p>Pennington, NJ · Weekend pickup only</p>
+          <p>{{town}} · Weekend pickup only</p>
           <p class="opacity-60">© <span id="year">2026</span> The Decaf Baker</p>
         </div>
       </div>

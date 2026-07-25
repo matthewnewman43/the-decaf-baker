@@ -4,7 +4,14 @@ Single-page landing site for **The Decaf Baker** — small-batch bakery. Choco t
 
 **Vibe:** pastel checkerboard picnic · nostalgic millennial · "the ice-cream-truck stuff, but better than you remember it."
 
-## Site structure (`index.html`)
+## How the site builds
+
+- **`template.html`** — the page, with `{{token}}` slots for adjustable facts
+- **`site.yaml`** — the values: baker name, town, order deadline, pickup window/spot, payment methods, lead times, deposit, prices
+- **`render.py`** — zero-dependency renderer (`template.html` + `site.yaml` → `index.html`); fails the build on unknown or missing tokens
+- On every push to `main`, the deploy workflow renders and publishes to the `gh-pages` branch — so **editing `site.yaml` and pushing is all it takes to change a price or pickup time**. `index.html` is a build artifact (gitignored on `main`).
+
+## Site structure (`template.html`)
 
 | # | Section | Job |
 |---|---------|-----|
@@ -25,13 +32,17 @@ Single-page landing site for **The Decaf Baker** — small-batch bakery. Choco t
 - **Type:** Fraunces (display) + Nunito (body), Google Fonts
 - **Tailwind:** Play CDN for prototyping — move to a proper Tailwind build before production
 
-## Before launch — swap the placeholders
+## Before launch
 
-1. **Facts in `[brackets]`:** prices, town, pickup window, order deadline, payment methods, lead times, your name/year, cottage food license.
+1. **Facts:** review `site.yaml` — every price, time, and policy lives there now.
 2. **Images:** all six menu photos are in place. Still needed: `about-baker.jpg` (photo of Kaley for the story section). The five `menu-*.jpg` files are ~400px crops from IG grid screenshots — swap for full-res originals when convenient.
-3. **Reviews:** replace the three sample testimonials with real ones.
+3. **Reviews:** replace the three sample testimonials with real ones (in `template.html`).
 4. **Ordering links:** every CTA points at `instagram.com/thedecafbaker` (DM ordering). Swap hrefs for a form/Square/Shopify link whenever you upgrade.
 
 ## Preview locally
 
-Just open `index.html` in a browser — no build step needed.
+```
+python3 render.py   # writes index.html
+```
+
+Then open `index.html` in a browser.

@@ -1,0 +1,28 @@
+# The Decaf Baker — site configuration
+# Edit these values and push to main; the deploy workflow renders them
+# into the live site (template.html -> index.html). Preview locally with:
+#   python3 render.py && open index.html
+
+# Who & where
+baker_name: Kaley
+town: Pennington, NJ
+
+# Weekly ordering rhythm
+order_deadline: Thursday 8 PM
+bake_time: Friday night
+pickup_window: 10 AM – 1 PM
+pickup_spot: porch pickup
+payment_methods: Venmo, Zelle, or cash
+delivery_policy: Pickup only for now.
+
+# Custom cakes
+cake_lead_time: 2 weeks
+holiday_lead_time: 4+ weeks
+cake_deposit: $20
+
+# Prices (numbers only — the $ lives in the template)
+price_choco_taco: 6
+price_cookie_bucket: 18
+price_chocolate_chip: 4
+price_custom_cakes: 45
+price_dipped_dozen: 24
