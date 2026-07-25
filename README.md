@@ -28,7 +28,7 @@ Single-page landing site for **The Decaf Baker** — small-batch bakery. Choco t
 ## Before launch — swap the placeholders
 
 1. **Facts in `[brackets]`:** prices, town, pickup window, order deadline, payment methods, lead times, your name/year, cottage food license.
-2. **Images:** `images/choco-taco.jpg` is in place (hero + Choco Taco card). Still needed in `images/`: `menu-cookie-bucket.jpg`, `menu-choc-chip.jpg`, `menu-heart-cake.jpg`, `menu-dipped.jpg`, `menu-rotating.jpg`, `about-baker.jpg`.
+2. **Images:** all six menu photos are in place. Still needed: `about-baker.jpg` (photo of Kaley for the story section). The five `menu-*.jpg` files are ~400px crops from IG grid screenshots — swap for full-res originals when convenient.
 3. **Reviews:** replace the three sample testimonials with real ones.
 4. **Ordering links:** every CTA points at `instagram.com/thedecafbaker` (DM ordering). Swap hrefs for a form/Square/Shopify link whenever you upgrade.
 
