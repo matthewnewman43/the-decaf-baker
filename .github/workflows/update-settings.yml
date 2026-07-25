@@ -1,0 +1,99 @@
+name: Update site settings
+
+# No-code settings editor: Actions tab -> "Update site settings" ->
+# "Run workflow" opens a form. Fill in only what you want to change —
+# blank fields keep their current value. The workflow updates site.yaml,
+# commits it, and republishes the site (a workflow's own push can't
+# trigger the deploy workflow, so publishing happens here too).
+on:
+  workflow_dispatch:
+    inputs:
+      order_deadline:
+        description: 'Order deadline (e.g. Thursday 8 PM)'
+        required: false
+      pickup_window:
+        description: 'Pickup window (e.g. 10 AM – 1 PM)'
+        required: false
+      pickup_spot:
+        description: 'Pickup spot (e.g. porch pickup)'
+        required: false
+      payment_methods:
+        description: 'Payment methods (e.g. Venmo, Zelle, or cash)'
+        required: false
+      cake_deposit:
+        description: 'Custom cake deposit (e.g. $20)'
+        required: false
+      price_choco_taco:
+        description: 'Choco Taco price, number only (e.g. 6)'
+        required: false
+      price_cookie_bucket:
+        description: 'Cookie Bucket price, number only (e.g. 18)'
+        required: false
+      price_chocolate_chip:
+        description: 'Chocolate Chip price, number only (e.g. 4)'
+        required: false
+      price_custom_cakes:
+        description: 'Custom cakes starting price, number only (e.g. 45)'
+        required: false
+      price_dipped_dozen:
+        description: 'Dipped dozen price, number only (e.g. 24)'
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      IN_order_deadline: ${{ inputs.order_deadline }}
+      IN_pickup_window: ${{ inputs.pickup_window }}
+      IN_pickup_spot: ${{ inputs.pickup_spot }}
+      IN_payment_methods: ${{ inputs.payment_methods }}
+      IN_cake_deposit: ${{ inputs.cake_deposit }}
+      IN_price_choco_taco: ${{ inputs.price_choco_taco }}
+      IN_price_cookie_bucket: ${{ inputs.price_cookie_bucket }}
+      IN_price_chocolate_chip: ${{ inputs.price_chocolate_chip }}
+      IN_price_custom_cakes: ${{ inputs.price_custom_cakes }}
+      IN_price_dipped_dozen: ${{ inputs.price_dipped_dozen }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply changes to site.yaml
+        run: |
+          python3 - << 'EOF'
+          import os
+          lines = open('site.yaml', encoding='utf-8').readlines()
+          changed = []
+          for i, line in enumerate(lines):
+              key = line.split(':', 1)[0].strip() if ':' in line else None
+              if not key or line.lstrip().startswith('#'):
+                  continue
+              value = os.environ.get('IN_' + key, '').strip()
+              if value:
+                  lines[i] = f"{key}: {value}\n"
+                  changed.append(f"{key} -> {value}")
+          open('site.yaml', 'w', encoding='utf-8').writelines(lines)
+          print("changed:", ", ".join(changed) if changed else "nothing")
+          EOF
+
+      - name: Commit settings change (if any)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add site.yaml
+          git diff --cached --quiet || { git commit -m "Update site settings"; git push origin HEAD:main; }
+
+      - name: Render site
+        run: python3 render.py
+
+      - name: Publish to gh-pages
+        run: |
+          git add -f index.html
+          git diff --cached --quiet && git commit --allow-empty -m "Render site from site.yaml" || git commit -m "Render site from site.yaml"
+          git push --force origin HEAD:gh-pages

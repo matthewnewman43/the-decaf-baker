@@ -4,6 +4,8 @@ Single-page landing site for **The Decaf Baker** — small-batch bakery. Choco t
 
 **Vibe:** pastel checkerboard picnic · nostalgic millennial · "the ice-cream-truck stuff, but better than you remember it."
 
+> **Updating prices/times without code:** see [UPDATING.md](UPDATING.md) — a form in the Actions tab or a one-line edit on github.com.
+
 ## How the site builds
 
 - **`template.html`** — the page, with `{{token}}` slots for adjustable facts
